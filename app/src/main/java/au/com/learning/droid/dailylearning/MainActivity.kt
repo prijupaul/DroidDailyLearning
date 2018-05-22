@@ -7,7 +7,7 @@ import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
-import au.com.learning.droid.dailylearning.RxKotlin.RxSample
+import au.com.learning.droid.dailylearning.RxKotlin.RxCombineLatest
 import au.com.learning.droid.dailylearning.preconditions.Preconditions
 import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
@@ -37,9 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         convertArrayToVar()
 
-        preconditions.isCheckNull()
-
-        RxSample().testSample()
+        RxCombineLatest().combineBoth()
     }
 
     val View.isVisible
