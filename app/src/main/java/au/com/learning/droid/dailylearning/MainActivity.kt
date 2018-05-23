@@ -8,7 +8,7 @@ import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import au.com.learning.droid.dailylearning.RxKotlin.RxCombineLatest
-import au.com.learning.droid.dailylearning.preconditions.Preconditions
+import au.com.learning.droid.dailylearning.Preconditions.Preconditions
 import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable

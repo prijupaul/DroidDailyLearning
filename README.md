@@ -4,3 +4,4 @@ Project to track my daily learnings
 - Android x
 - RxKotlin
 - Navigation graph
+- Kotlin Delegates

@@ -1,5 +1,6 @@
 package au.com.learning.droid.dailylearning.RxKotlin
 
+import androidx.annotation.VisibleForTesting
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -11,8 +12,9 @@ import io.reactivex.schedulers.Schedulers
 
 class RxCombineLatest {
 
-    private val observable: Observable<String> = Observable.create<String> {
-        Thread {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val observable: Observable<String> = Observable.create<String> {
+//        Thread {
             it.onNext("Emit 1")
             Thread.sleep(1000)
             it.onNext("Emit 2")
@@ -21,10 +23,11 @@ class RxCombineLatest {
             it.onNext("Emit 4")
             Thread.sleep(1000)
             it.onComplete()
-        }.start()
+//        }.start()
     }
 
-    private val observable2: Observable<String> = Observable.create<String> {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val observable2: Observable<String> = Observable.create<String> {
         Thread {
             it.onNext("Emit 1")
             it.onNext("Emit 2")
@@ -64,7 +67,7 @@ class RxCombineLatest {
 
         val d = Observables.combineLatest(observable, observable2)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.computation())
+                .subscribeOn(Schedulers.newThread())
                 .doOnDispose { println("combineboth disposed") }
                 .doFinally { println("combineboth finally") }
                 .doOnComplete { println("combineboth oncomplete") }

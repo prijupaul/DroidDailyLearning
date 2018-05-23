@@ -1,4 +1,4 @@
-package au.com.learning.droid.dailylearning.preconditions
+package au.com.learning.droid.dailylearning.Preconditions
 
 class Preconditions {
 
