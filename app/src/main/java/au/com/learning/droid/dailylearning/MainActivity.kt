@@ -7,8 +7,7 @@ import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
-import au.com.learning.droid.dailylearning.RxKotlin.RxCombineLatest
-import au.com.learning.droid.dailylearning.Preconditions.Preconditions
+import au.com.learning.droid.dailylearning.RxKotlin.transforming.RxScan
 import com.jakewharton.rxbinding2.view.RxView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
@@ -25,19 +24,27 @@ class MainActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.java.simpleName
     private val name = PublishSubject.create<String>()
     private val age = PublishSubject.create<Int>()
-    private val preconditions = Preconditions()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupUi()
+//        setupUi()
 
-        setupCombinedLatest()
+//        setupCombinedLatest()
+//
+//        convertArrayToVar()
+//
+//        RxCombineLatest().combineBoth()
 
-        convertArrayToVar()
+//        RxDebounce().testDebouce()
 
-        RxCombineLatest().combineBoth()
+//        RxMap().listToMap()
+
+//        RxSorted().sortList()
+
+        RxScan().performScanOperator()
     }
 
     val View.isVisible
@@ -56,8 +63,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupCombinedLatest() {
-        Observables.combineLatest(name,age) { n, a -> "$n - age:${a}" }
-                .subscribe { Log.d("combineLatest",it) }
+        val subscribe = Observables.combineLatest(name, age) { n, a -> "$n - age:${a}" }
+                .subscribe { Log.d("combineLatest", it) }
     }
 
     private fun triggerCombineLatest() {
